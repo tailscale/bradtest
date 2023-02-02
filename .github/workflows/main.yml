@@ -9,9 +9,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: tailscale/bradtest@v4
+        uses: tailscale/bradtest@v5
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          who-to-greet: 'Tailscalars 45'
+          who-to-greet: 'Tailscalars 46'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
