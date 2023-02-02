@@ -11,6 +11,6 @@ jobs:
       - id: foo
         uses: tailscale/bradtest@v2
         with:
-          who-to-greet: 'Tailscalars People'
+          who-to-greet: 'Tailscalars 44'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
