@@ -11,6 +11,7 @@ jobs:
       - id: foo
         uses: tailscale/bradtest@v2
         with:
-          who-to-greet: 'Tailscalars 44'
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          who-to-greet: 'Tailscalars 45'
       - run: echo random-number ${{ steps.foo.outputs.random-number }}
         shell: bash
