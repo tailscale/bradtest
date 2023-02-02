@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - id: foo
-        uses: tailscale/bradtest@v2
+        uses: tailscale/bradtest@v4
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           who-to-greet: 'Tailscalars 45'
