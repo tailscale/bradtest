@@ -1,7 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"encoding/json"
+	"fmt"
+	"os"
+)
 
 func main() {
-	fmt.Println("Hello from Go")
+	env, _ := json.MarshalIndent(os.Environ(), "", "  ")
+	fmt.Printf("Hello from Go. Env is: %s", env)
 }
