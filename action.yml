@@ -20,7 +20,7 @@ runs:
       go-version: '1.20.x'
   - run: echo Hello ${{ inputs.who-to-greet }}.
     shell: bash
-  - run: go run ./hi.go
+  - run: go run ./hi.go -- ${{ inputs.GITHUB_TOKEN }}
     shell: bash
   - id: random-number-generator
     run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
