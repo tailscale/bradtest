@@ -18,6 +18,7 @@ runs:
   - run: echo Hello ${{ inputs.who-to-greet }}.
     shell: bash
   - run: go run ./hi.go
+    shell: bash
   - id: random-number-generator
     run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
     shell: bash
