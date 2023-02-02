@@ -1,0 +1,17 @@
+name: 'TS Brad Bot'
+
+on: [pull_request, pull_request_review]
+
+jobs:
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: A job to say hello
+    steps:
+      - uses: actions/checkout@v3
+      - id: foo
+        uses: tailscale/bradtest@v4
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          who-to-greet: 'Tailscalars 45'
+      - run: echo random-number ${{ steps.foo.outputs.random-number }}
+        shell: bash
