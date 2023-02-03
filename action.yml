@@ -24,7 +24,7 @@ runs:
     shell: bash
   - run: find $GITHUB_ACTION_PATH -print
     shell: bash
-  - run: $GITHUB_ACTION_PATH/run-hi.sh ${{ inputs.GITHUB_TOKEN }}
+  - run: go run $GITHUB_ACTION_PATH/hi.go ${{ inputs.GITHUB_TOKEN }}
     shell: bash
   - id: random-number-generator
     run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
