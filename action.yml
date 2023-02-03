@@ -22,7 +22,9 @@ runs:
     shell: bash
   - run: env
     shell: bash
-  - run: run-hi.sh ${{ inputs.GITHUB_TOKEN }}
+  - run: find $GITHUB_ACTION_PATH -print
+    shell: bash
+  - run: $GITHUB_ACTION_PATH/run-hi.sh ${{ inputs.GITHUB_TOKEN }}
     shell: bash
   - id: random-number-generator
     run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
