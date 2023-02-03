@@ -1,9 +1,6 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
-go run hi.go "$@" && exit 0
+set -eu
+(cd $GITHUB_ACTION_PATH && go build)
 
-echo "nope; pwd is $PWD"
-env
-
-exec go run ./hi.go -- "$@"
-
+exec $GITHUB_ACTION_PATH/bradtest "$@"
