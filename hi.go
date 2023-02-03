@@ -74,5 +74,19 @@ func main() {
 	}
 	commitJ, _ := json.MarshalIndent(repoCommit, "", "  ")
 	fmt.Printf("Got commit: %s\n", commitJ)
-	//client.Repositories.CreateStatus(ctx, "tailscale", "bradtest2", ""
+
+	sha := *repoCommit.Parents[1].SHA
+
+	st, _, err := client.Repositories.CreateStatus(ctx, org, repo, sha, &github.RepoStatus{
+		URL:         github.String("https://tailscale.com/check/bradtest-url"),
+		State:       github.String("failure"), // error, failure, pending, success
+		TargetURL:   github.String("https://tailscale.com/check/bradtest-targeturl"),
+		Description: new(string),
+		Context:     github.String("bradtest-ctx"),
+	})
+	if err != nil {
+		log.Fatalf("CreateStatus: %v", err)
+	}
+	j, _ := json.MarshalIndent(st, "", "  ")
+	fmt.Printf("Status: %s", j)
 }
