@@ -25,5 +25,8 @@ approval_rules:
       comment_patterns:
         - "(?m)^LGTM for foo\\b"
       github_review: false
+  requires:
+    count: 1
+    permissions: ["write"]
 
 - name: bar
