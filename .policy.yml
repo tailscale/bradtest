@@ -22,8 +22,9 @@ approval_rules:
     allow_contributor: true
     invalidate_on_push: true
     methods:
+      comments: []
       comment_patterns:
-        - "(?m)^approve for foo\\b"
+        - "(?m)^approve for foo\\s*($|\\.)"
       github_review: false
   requires:
     count: 1
@@ -39,8 +40,9 @@ approval_rules:
     allow_contributor: true
     invalidate_on_push: true
     methods:
+      comments: []
       comment_patterns:
-        - "(?m)^approve for foo-backup\\b"
+        - "(?m)^approve for foo-backup\\s*($|\\.)"
       github_review: false
   requires:
     count: 1
@@ -56,8 +58,9 @@ approval_rules:
     allow_contributor: true
     invalidate_on_push: true
     methods:
+      comments: []
       comment_patterns:
-        - "(?m)^approve for foo-override\\b"
+        - "(?m)^approve for foo-override\\s*($|\\.)"
       github_review: false
   requires:
     count: 2
