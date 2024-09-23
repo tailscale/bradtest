@@ -3,6 +3,27 @@
 policy:
   approval:
   - no approval necessary
+  - foo
+  - bar
 
 approval_rules:
 - name: no approval necessary
+- name: foo
+  description: "See go/policy/foo"
+  if:
+    changed_files:
+      paths:
+        - "^foo*"
+  options:
+    allow_author: true
+    allow_contributor: true
+    invalidated_on_push: true
+    methods:
+      comments:
+        - "approve for foo"
+        - "approve/foo"
+      comment_patterns:
+        - "(?m)^LGTM for foo\\b"
+      github_review: false
+
+- name: bar
