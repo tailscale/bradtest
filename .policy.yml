@@ -24,7 +24,7 @@ approval_rules:
     methods:
       comment_patterns:
         - "(?m)^approve for foo\\b"
-      github_review: true
+      github_review: false
   requires:
     count: 1
     permissions: ["write"]
