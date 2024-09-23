@@ -22,11 +22,8 @@ approval_rules:
     allow_contributor: true
     invalidate_on_push: true
     methods:
-      comments:
-        - "approve for foo"
-        - "approve/foo"
       comment_patterns:
-        - "(?m)^LGTM for foo\\b"
+        - "(?m)^approve for foo\\b"
       github_review: true
   requires:
     count: 1
@@ -42,11 +39,8 @@ approval_rules:
     allow_contributor: true
     invalidate_on_push: true
     methods:
-      comments:
-        - "approve for foo-backup"
-        - "approve/foo-backup"
       comment_patterns:
-        - "(?m)^LGTM for foo-backup\\b"
+        - "(?m)^approve for foo-backup\\b"
       github_review: false
   requires:
     count: 1
@@ -62,11 +56,8 @@ approval_rules:
     allow_contributor: true
     invalidate_on_push: true
     methods:
-      comments:
-        - "approve for foo-override"
-        - "approve/foo-override"
       comment_patterns:
-        - "(?m)^LGTM for foo-override\\b"
+        - "(?m)^approve for foo-override\\b"
       github_review: false
   requires:
     count: 2
