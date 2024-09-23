@@ -17,7 +17,7 @@ approval_rules:
   options:
     allow_author: true
     allow_contributor: true
-    invalidated_on_push: true
+    invalidate_on_push: true
     methods:
       comments:
         - "approve for foo"
