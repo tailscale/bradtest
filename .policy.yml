@@ -3,12 +3,15 @@
 policy:
   approval:
   - no approval necessary
-  - foo
+  - or:
+    - foo owner approves
+    - backup foo owner approves
+    - other engineers override foo approval
   - bar
 
 approval_rules:
 - name: no approval necessary
-- name: foo
+- name: foo owner approves
   description: "See go/policy/foo"
   if:
     changed_files:
@@ -24,9 +27,49 @@ approval_rules:
         - "approve/foo"
       comment_patterns:
         - "(?m)^LGTM for foo\\b"
+      github_review: true
+  requires:
+    count: 1
+    permissions: ["write"]
+- name: backup foo owner approves
+  description: "See go/policy/foo"
+  if:
+    changed_files:
+      paths:
+        - "^foo*"
+  options:
+    allow_author: true
+    allow_contributor: true
+    invalidate_on_push: true
+    methods:
+      comments:
+        - "approve for foo-backup"
+        - "approve/foo-backup"
+      comment_patterns:
+        - "(?m)^LGTM for foo-backup\\b"
       github_review: false
   requires:
     count: 1
+    permissions: ["write"]
+- name: other engineers override foo approval
+  description: "See go/policy/foo"
+  if:
+    changed_files:
+      paths:
+        - "^foo*"
+  options:
+    allow_author: true
+    allow_contributor: true
+    invalidate_on_push: true
+    methods:
+      comments:
+        - "approve for foo-override"
+        - "approve/foo-override"
+      comment_patterns:
+        - "(?m)^LGTM for foo-override\\b"
+      github_review: false
+  requires:
+    count: 2
     permissions: ["write"]
 
 - name: bar
